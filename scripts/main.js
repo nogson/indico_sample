@@ -1,6 +1,8 @@
 $(function() {
 
-    var $happyPer = $(' #happyPer');
+    var $happyPer = $('#happyPer');
+
+    var $loader = $('#loader');
 
     $('#sendBtn').on('click', function() {
         var text = $('#inputText').val();
@@ -11,6 +13,7 @@ $(function() {
     function postMessage(text) {
 
         $happyPer.fadeOut();
+        $loader.show();
 
         $.post(
             'https://apiv2.indico.io/sentiment',
@@ -19,6 +22,7 @@ $(function() {
                 'data': text,
             })
         ).then(function(res) {
+            $loader.hide();
             var response = JSON.parse(res);
             var happyPer = Math.floor(response.results * 100);
             var imgNum = Math.floor(Math.random() * 10);
@@ -27,7 +31,7 @@ $(function() {
             setTimeout(function() {
                 $happyPer.html('<span class="label">幸福度</span><p>' + happyPer + '<span>%</span></p>');
                 $happyPer.fadeIn();
-            }, 500);
+            }, 1000);
 
         });
     }

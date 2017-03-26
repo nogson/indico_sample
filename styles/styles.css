@@ -17,7 +17,7 @@ div {
 
 input {
     height: 30px;
-    width: 480px;
+    width: 470px;
     padding: 0 5px;
 }
 
@@ -69,9 +69,19 @@ button {
 
 #happyPer p {
     text-align: center;
+    margin: 0;
 }
 
 #happyPer span {
     font-size: 15px;
     color: #FFF;
+}
+
+#imgWrapper #loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    margin: -75px 0 0 -75px;
+    display: none;
 }
